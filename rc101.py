@@ -62,9 +62,9 @@ async def pong(ctx):
    
 @bot.command()
 @commands.is_owner()
-async def echo(ctx,*, message : str):
+async def echo(ctx,*, requested : str):
     await message.delete(ctx.message)
-    await ctx.send(message)
+    await ctx.send(requested)
     
 @bot.command()
 async def boobs(ctx):
