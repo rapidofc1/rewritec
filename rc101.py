@@ -43,7 +43,7 @@ async def on_ready():
     
 @bot.command()
 @commands.cooldown(1, 10, commands.BucketType.user)
-async def help(ctx):
+async def hellp(ctx):
     embed=discord.Embed(color=0xffe502, title="Cosmos Alpha", timestamp=datetime.datetime.utcnow(), description="Welcome to Cosmos Alpha, cleaner, and better. The prefix is `/`, and I use a new library of Python, `rewrite`!")
     embed.add_field(name="Core", value="```info () help ()```")
     embed.add_field(name="Utilities", value="```Coming soon...```")
