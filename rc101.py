@@ -28,19 +28,39 @@ async def on_ready():
     print(bot.user.name)
     print("------------")
     
-@bot.command()#1
+@bot.command()
 @commands.cooldown(1, 10, commands.BucketType.user)
-async def hellp(ctx):
-    embed=discord.Embed(color=0xffe502, title="Cosmos Alpha", timestamp=datetime.datetime.utcnow(), description="Welcome to Cosmos Alpha, cleaner, and better. The prefix is `/`, and I use a new library of Python, `rewrite`!")
-    embed.add_field(name="Core", value="```info () help ()```")
+async def help(ctx):
+    embed=discord.Embed(color=0xffe502, title="Commands", timestamp=datetime.datetime.utcnow(), description="Welcome to Cosmos Alpha, cleaner, and better. The prefix is `/`, using the latest library of Python, `rewrite`!")
+    embed.add_field(name="Core", value="```info | help```")
     embed.add_field(name="Utilities", value="```Coming soon...```")
     embed.add_field(name="Administrative", value="```Coming soon...```")
-    embed.add_field(name="Fun/Misc", value="```Coming soon...```")
-    embed.add_field(name="NSFW", value="```boobs () butts```")
+    embed.add_field(name="Fun/Misc", value="```ping | pong```")
+    embed.add_field(name="NSFW", value="```boobs | butts```")
+    embed.set_footer(text="Cosmos Alpha ")
+    await ctx.send(embed=embed)
+    
+@bot.command()
+async def botinfo(ctx):
+    embed=discord.Embed(color=0xffe502, title="Information", timestamp=datetime.datetime.utcnow(), description="Cosmos Alpha, is cleaner, and better. This bot was re-made in the need of using the latest Python library. Cosmos used Async, thr older out of date library.")
+    embed.add_field(name="Written With", value="Python.py (Rewrite Library)")
+    embed.add_field(name="Creator", value="Rapid#0501")
     embed.set_footer(text="Cosmos Alpha ")
     await ctx.send(embed=embed)
 
-@bot.command()#2
+@bot.command()
+async def ping(ctx):
+    time=time.time()
+    ping = time.time() - pingtime
+    await ctx.send("**Pong! `%0.1f seconds`**")
+    
+@bot.command()
+async def pong(ctx):
+    time=time.time()
+    ping = time.time() - pingtime
+    await ctx.send("**Ping! `%0.1f seconds`**")
+   
+@bot.command()
 async def boobs(ctx):
     if not ctx.channel.is_nsfw():
       await ctx.send("**This channel is not marked as NSFW.**")
@@ -60,7 +80,7 @@ async def boobs(ctx):
     em.set_footer(text=f"Requested by {ctx.message.author.name}")
     await ctx.send(embed=em)
     
-@bot.command()#3
+@bot.command()
 async def butts(ctx):
     if not ctx.channel.is_nsfw():
       await ctx.send("**This channel is not marked as NSFW.**")
@@ -80,7 +100,7 @@ async def butts(ctx):
     em.set_footer(text=f"Requested by {ctx.message.author.name}")
     await ctx.send(embed=em) 
    
-@bot.command()#4
+@bot.command()
 @commands.cooldown(1, 10, commands.BucketType.user)
 async def slots(ctx):
     emojis = "🍎🍊🍐🍋🍉🍇🍓🍒"
@@ -103,22 +123,6 @@ async def slots(ctx):
     await asyncio.sleep(1.0)
     await message.edit(embed, embed=discord.Embed(color=0xffffff, description=f'**:slot_machine: | {ctx.message.author.name} rolled the slots...\nSpinning...\n------{ctx.message.author.name}------\n`{a} | {b} | {c}`\n{message}**'))
 
-#👺👺👺👺👺👺👺ADMIN COMMANDS👺👺👺👺👺👺👺#
-@bot.command()#5
-async def nick(ctx, member : discord.Member, *,  name : str):
-    if not ctx.message.author.server_permissions.manage_nicknames:
-      return await ctx.send("**:x: | Insufficient permissions.**")
-    await member.edit(nick, member, name)
-    await ctx.send("**:white_check_mark: | Changed {}'s nickname to: `{}`**".format(member.name, name))
-    
-@bot.command()#6
-async def kick(ctx, member : discord.Member, *,  reason: str = ""):
-    if not ctx.message.author.server_permissions.kick_members:
-      return await ctx.send("**:x: | Insufficient permissions.**")
-    await member.kick(member)
-    #await ctx.send(member, "**You were kicked from {}!\nReason: {}\nAction by: {}**".format(ctx.message.server.name, reason, ctx.message.author.name))
-    await ctx.send("**:white_check_mark: | Kicked {}, reason: `{}`**".format(member.name, reason))
-    
 if not os.environ.get('TOKEN'):
     print("no token found!")
 bot.run(os.environ.get('TOKEN').strip('"'))
