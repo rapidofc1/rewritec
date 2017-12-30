@@ -61,6 +61,12 @@ async def pong(ctx):
     ping = time.time() - pingtime
    
 @bot.command()
+@commands.is_owner()
+async def echo(ctx,*, message : str):
+    await delete_message(ctx.message)
+    await ctx.send(message)
+    
+@bot.command()
 async def boobs(ctx):
     if not ctx.channel.is_nsfw():
       await ctx.send("**This channel is not marked as NSFW.**")
