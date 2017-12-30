@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup
 import ftfy
 
 bot = commands.Bot(command_prefix="/")
-bot.remove_command ('help')
+bot.remove_command('help')
 
 @bot.event
 async def on_ready():
@@ -28,20 +28,7 @@ async def on_ready():
     print(bot.user.name)
     print("------------")
     
-#@bot.command()
-#async def info(ctx):
-#    unique_members = set(bot.get_all_members())
-#    embed = discord.Embed(color = 0x6691D9, timestamp = datetime.datetime.utcnow(), title = "Cosmos Info", description = "Cosmos is a bot made only by Rapid, no more than a bit of help and some command examples from others. It is coded on an Android S7 on an application called Termux, by Rapid")
-#    embed.set_author(name = "All bot info and statistics", icon_url = "https://cdn.discordapp.com/attachments/379454585808617472/389255356636987394/20171206_140705.jpg")
-#    embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/379454585808617472/389255356636987394/20171206_140705.jpg")
-#    embed.add_field(name = "Owner/Creator :spy:", value = "Rapid#0501")
-#    embed.add_field(name = "Made with <:Python:390560559113961472>", value = "Python Discord.py\nUsing Termux")
-#    embed.add_field(name = "Population :star:", value = "Servers: **{}".format(len(bot.servers)) + "**\n" + "Unique Members: **{}".format(len(set(bot.get_all_members()))) + "**\n" + "Unique Online: **{}".format(sum(1 for m in unique_members if m.status != discord.Status.offline)) + "**\n" + "Total Members: **{}".format(sum(len(s.members) for s in bot.servers)) + "**\n" + "Members Online:  **{}".format(sum(1 for m in bot.get_all_members() if m.status != discord.Status.offline)) + "**\n" + "Channels: **{}".format(len(set(bot.get_all_channels()))) + "**\n" + "Emojis: **{}".format(len(set(bot.get_all_emojis()))) + "**\n" + "Total Commands: **107**")
-#    embed.add_field(name = "Links :link:", value = "[Support Server]({})" .format("https://discord.gg/pDvJZEN") + "\n" + "[Invite Me]({})".format("https://discordapp.com/oauth2/authorize?client_id=385622427977121813&scope=bot&permissions=2146958591") + "\n" + "[DiscordBots.org]({})".format("https://discordbots.org/bot/385622427977121813"))
-#    embed.set_footer(text = "| © Cosmos ", icon_url = "https://cdn.discordapp.com/attachments/385625038444822539/388086240538525696/20171206_140705.jpg")
-#    await ctx.send(embed = embed)
-    
-@bot.command()
+@bot.command()#1
 @commands.cooldown(1, 10, commands.BucketType.user)
 async def hellp(ctx):
     embed=discord.Embed(color=0xffe502, title="Cosmos Alpha", timestamp=datetime.datetime.utcnow(), description="Welcome to Cosmos Alpha, cleaner, and better. The prefix is `/`, and I use a new library of Python, `rewrite`!")
@@ -53,43 +40,47 @@ async def hellp(ctx):
     embed.set_footer(text="Cosmos Alpha ")
     await ctx.send(embed=embed)
 
-@bot.command()
-@commands.cooldown(1, 10, commands.BucketType.user)
-async def war(ctx):
-    cards = {2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9', 10: '10', 11: 'Jack', 12: 'Queen', 13: 'King', 14: 'Ace'}
-    member = ctx.message.author.name
-    player = random.randint(2, 14)
-    dealer = random.randint(2, 14)
-    embed = await ctx.send(embed=discord.Embed(color=0x49bcff, description="**:shield: | Shuffling the cards...**"))
-    await asyncio.sleep(1.0)
-    await message.edit(embed, embed, embed=discord.Embed(color=0x49bcff, description="**:shield: | Shuffling the cards...\nDealing...**"))
-    await asyncio.sleep(1.0)
-    await message.edit(embed, embed=discord.Embed(color=0x49bcff, description=f'**:shield: | Shuffling the cards...\nDealing...\n------{member}------**'))
-    if int(player) > int(dealer):
-        await asyncio.sleep(1.0)
-        await message.edit(embed, embed=discord.Embed(color=0x84ba74, description=f'**:shield: | Shuffling the cards...\nDealing...\n------{member}-----**\n`Player: ' + cards[player] + '`\n`Dealer: ' + cards[dealer] + '`\n**:tada: | You won {}!**'.format(ctx.message.author.name)))
-    elif int(player) < int(dealer):
-        await asyncio.sleep(1.0)
-        await message.edit(embed, embed=discord.Embed(color=0xde0036, description=f'**:shield: | Shuffling the cards...\nDealing...\n------{member}------**\n`Player: ' +cards[player] + '`\n`Dealer: ' + cards[dealer] + '`\n**:skull_crossbones: | You lost {}.**'.format(ctx.message.author.name)))
-    else:
-        await asyncio.sleep(1.0)
-        player2 = random.randint(2, 14)
-        player3 = random.randint(2, 14)
-        player4 = random.randint(2, 14)
-        dealer2 = random.randint(2, 14)
-        dealer3 = random.randint(2, 14)
-        dealer4 = random.randint(2, 14)
-        if int(player4) > int(dealer4):
-            await asyncio.sleep(1.0)
-            await message.edit(embed, embed=discord.Embed(color=0x84ba74, description=f'**:shield: | Shuffling the cards...\nDealing...\n------{member}------**\n`Player: ' + cards[player] + '`, ' + cards[player2] + ', ' + cards[player3] + ', `**Deciding Card: **' + cards[player4] + '`\nDealer: ' + cards[dealer] + '`, ' + cards[dealer2] + ', ' + cards[dealer3] + ', `**Deciding Card: **' + cards[dealer4] + '`\n**:tada: | You won {}!**'.format(ctx.message.author.name)))
-        elif int(player4) < int(dealer4):
-            await asyncio.sleep(1.0)
-            await message.edit(embed, embed=discord.Embed(color=0xde0036, description=f'**:shield: | Shuffling the cards...\nDealing...\n------{member}------**\n`Player: ' +cards[player] + '`, ' + cards[player2] + ', ' + cards[player3] + ', `**Deciding Card: **' + cards[player4] + '`\nDealer: ' +cards[dealer] + '`, ' + cards[dealer2] + ', ' + cards[dealer3] + ', `**Deciding Card: **' + cards[dealer4] + '`\n**:skull_crossbones: | You lost {}.**'.format(ctx.message.author.name)))
-        else:
-            await asyncio.sleep(1.0)
-            await message.edit(embed, embed=discord.Embed(color=0xffc627, description=f'**:shield: | Shuffling the cards...\nDealing...\n------{member}------**\n`Player: ' +cards[player] + '`, ' + cards[player2] + ', ' + cards[player3] + ', `**Deciding Card: **' + cards[player4] + '`\nDealer: ' +cards[dealer] + '`, ' + cards[dealer2] + ', ' + cards[dealer3] + ', `**Deciding Card: **' + cards[dealer4] + '`\n**:crossed_swords: | {}, it is a tie!**'.format(ctx.message.author.name)))
-
-@bot.command()
+@bot.command()#2
+async def boobs(ctx):
+    if not ctx.channel.is_nsfw():
+      await ctx.send("**This channel is not marked as NSFW.**")
+      return
+    """Random boobies!"""
+    api_base = 'http://api.oboobs.ru/boobs/'
+    number = random.randint(1, 10303)
+    url_api = api_base + str(number)
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url_api) as data:
+            data = await data.json()
+            data = data[0]
+    image_url = 'http://media.oboobs.ru/' + data['preview']
+    em = discord.Embed(color=0xff02e9)
+    em.set_author(name="Random NSFW Image")
+    em.set_image(url=image_url)
+    em.set_footer(text=f"Requested by {ctx.message.author.name}")
+    await ctx.send(embed=em)
+    
+@bot.command()#3
+async def butts(ctx):
+    if not ctx.channel.is_nsfw():
+      await ctx.send("**This channel is not marked as NSFW.**")
+      return
+    """Random butts!"""
+    api_base = 'http://api.obutts.ru/butts/'
+    number = random.randint(1, 4296)
+    url_api = api_base + str(number)
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url_api) as data:
+            data = await data.json()
+            data = data[0]
+    image_url = 'http://media.obutts.ru/' + data['preview']
+    em = discord.Embed(color=0xff02e9)
+    em.set_author(name="Random NSFW Image")
+    em.set_image(url=image_url)
+    em.set_footer(text=f"Requested by {ctx.message.author.name}")
+    await ctx.send(embed=em) 
+   
+@bot.command()#4
 @commands.cooldown(1, 10, commands.BucketType.user)
 async def slots(ctx):
     emojis = "🍎🍊🍐🍋🍉🍇🍓🍒"
@@ -113,14 +104,14 @@ async def slots(ctx):
     await message.edit(embed, embed=discord.Embed(color=0xffffff, description=f'**:slot_machine: | {ctx.message.author.name} rolled the slots...\nSpinning...\n------{ctx.message.author.name}------\n`{a} | {b} | {c}`\n{message}**'))
 
 #👺👺👺👺👺👺👺ADMIN COMMANDS👺👺👺👺👺👺👺#
-@bot.command()
+@bot.command()#5
 async def nick(ctx, member : discord.Member, *,  name : str):
     if not ctx.message.author.server_permissions.manage_nicknames:
       return await ctx.send("**:x: | Insufficient permissions.**")
     await member.edit(nick, member, name)
     await ctx.send("**:white_check_mark: | Changed {}'s nickname to: `{}`**".format(member.name, name))
-
-@bot.command()
+    
+@bot.command()#6
 async def kick(ctx, member : discord.Member, *,  reason: str = ""):
     if not ctx.message.author.server_permissions.kick_members:
       return await ctx.send("**:x: | Insufficient permissions.**")
