@@ -121,6 +121,22 @@ async def slots(ctx):
     await asyncio.sleep(1.0)
     await message.edit(embed, embed=discord.Embed(color=0xffffff, description=f'**:slot_machine: | {ctx.message.author.name} rolled the slots...\nSpinning...\n------{ctx.message.author.name}------\n`{a} | {b} | {c}`\n{message}**'))
 
+#👺👺👺👺👺👺👺ADMIN COMMANDS👺👺👺👺👺👺👺#
+@bot.command()
+async def nick(ctx, member : discord.Member, *,  name : str):
+    if not ctx.message.author.server_permissions.manage_nicknames:
+      return await ctx.send("**:x: | Insufficient permissions.**")
+    await member.edit(nick, member, name)
+    await ctx.send("**:white_check_mark: | Changed {}'s nickname to: `{}`**".format(member.name, name))
+
+@bot.command()
+async def kick(ctx, member : discord.Member, *,  reason: str = ""):
+    if not ctx.message.author.server_permissions.kick_members:
+      return await ctx.send("**:x: | Insufficient permissions.**")
+    await member.kick(member)
+    await ctx.send(member, "**You were kicked from {}!\nReason: {}\nAction by: {}**".format(ctx.message.server.name, reason, ctx.message.author.name))
+    await ctx.send("**:white_check_mark: | Kicked {}, reason: `{}`**".format(member.name, reason))
+    
 if not os.environ.get('TOKEN'):
     print("no token found!")
 bot.run(os.environ.get('TOKEN').strip('"'))
