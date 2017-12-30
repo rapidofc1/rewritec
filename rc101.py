@@ -58,7 +58,7 @@ async def ping(ctx):
 async def pong(ctx):
     time=time.time()
     ping = time.time() - pingtime
-    await ctx.send("**Ping! `%0.1f seconds`**")
+    await ctx.send("**Ping! `%.01f seconds`**")
    
 @bot.command()
 async def boobs(ctx):
