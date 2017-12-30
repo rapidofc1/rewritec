@@ -63,7 +63,7 @@ async def pong(ctx):
 @bot.command()
 @commands.is_owner()
 async def echo(ctx,*, requested : str):
-    await message.delete(ctx.message)
+    await ctx.message.delete(ctx.message)
     await ctx.send(requested)
     
 @bot.command()
