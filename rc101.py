@@ -134,7 +134,7 @@ async def kick(ctx, member : discord.Member, *,  reason: str = ""):
     if not ctx.message.author.server_permissions.kick_members:
       return await ctx.send("**:x: | Insufficient permissions.**")
     await member.kick(member)
-    await ctx.send(member, "**You were kicked from {}!\nReason: {}\nAction by: {}**".format(ctx.message.server.name, reason, ctx.message.author.name))
+    #await ctx.send(member, "**You were kicked from {}!\nReason: {}\nAction by: {}**".format(ctx.message.server.name, reason, ctx.message.author.name))
     await ctx.send("**:white_check_mark: | Kicked {}, reason: `{}`**".format(member.name, reason))
     
 if not os.environ.get('TOKEN'):
