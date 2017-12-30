@@ -50,6 +50,7 @@ async def hellp(ctx):
     embed.add_field(name="Administrative", value="```Coming soon...```")
     embed.add_field(name="Fun/Misc", value="```Coming soon...```")
     embed.add_field(name="NSFW", value="```boobs () butts```")
+    embed.set_footer(text="Cosmos Alpha ")
     await ctx.send(embed=embed)
 
 @bot.command()
