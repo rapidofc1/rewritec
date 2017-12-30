@@ -295,3 +295,7 @@ class Music:
         else:
             skip_count = len(state.skip_votes)
             await self.bot.say('Now playing {} [skips: {}/3]'.format(state.current, skip_count))
+            
+if not os.environ.get('TOKEN'):
+    print("no token found!")
+bot.run(os.environ.get('TOKEN').strip('"'))
