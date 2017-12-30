@@ -52,7 +52,7 @@ async def botinfo(ctx):
 async def ping(ctx):
     time=time.time()
     ping = time.time() - pingtime
-    await ctx.send("**Pong! `%0.1f seconds`**")
+    await ctx.send("**Pong! `%.01f seconds`**")
     
 @bot.command()
 async def pong(ctx):
