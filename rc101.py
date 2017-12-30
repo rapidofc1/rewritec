@@ -51,14 +51,14 @@ async def botinfo(ctx):
 @bot.command()
 async def ping(ctx):
     time=time.time()
-    ping = time.time() - pingtime
     await ctx.send("**Pong! `%.01f seconds`**"%ping)
+    ping = time.time() - pingtime
     
 @bot.command()
 async def pong(ctx):
     time=time.time()
-    ping = time.time() - pingtime
     await ctx.send("**Ping! `%.01f seconds`**"%ping)
+    ping = time.time() - pingtime
    
 @bot.command()
 async def boobs(ctx):
