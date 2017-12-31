@@ -35,7 +35,7 @@ async def help(ctx):
     embed.add_field(name="Core", value="```info | help```")
     embed.add_field(name="Utilities", value="```Coming soon...```")
     embed.add_field(name="Administrative", value="```Coming soon...```")
-    embed.add_field(name="Fun/Misc", value="```ping | pong```")
+    embed.add_field(name="Fun/Misc", value="```ping | pong | trump```")
     embed.add_field(name="NSFW", value="```boobs | butts```")
     embed.set_footer(text="Cosmos Alpha ")
     await ctx.send(embed=embed)
@@ -50,16 +50,16 @@ async def botinfo(ctx):
 
 @bot.command()
 async def ping(ctx):
-    time=time.time()
-    await ctx.send("**Pong! `%.01f seconds`**"%ping)
-    ping = time.time() - pingtime
+    await ctx.send("**Pong!**")
     
 @bot.command()
 async def pong(ctx):
-    time=time.time()
-    await ctx.send("**Ping! `%.01f seconds`**"%ping)
-    ping = time.time() - pingtime
-   
+    await ctx.send("**Ping!**")
+
+@bot.command()
+async def trump(ctx):
+    await ctx.send(":trumpet:" * 200)
+    
 @bot.command()
 @commands.is_owner()
 async def echo(ctx,*, requested : str):
