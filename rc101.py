@@ -108,7 +108,7 @@ async def e621(ctx, args):
     embed = discord.Embed(color=0xff02e9)
     embed.set_author(name="Random NSFW Image")
     embed.set_image(url=image_url)
-        embed.set_footer(text=f"Requested by {ctx.message.author.name}")
+    embed.set_footer(text=f"Requested by {ctx.message.author.name}")
     
 @bot.command()
 async def butts(ctx):
