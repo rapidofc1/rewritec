@@ -36,7 +36,7 @@ async def help(ctx):
     embed.add_field(name="Utilities", value="```Coming soon...```")
     embed.add_field(name="Administrative", value="```Coming soon...```")
     embed.add_field(name="Fun/Misc", value="```ping | pong | trump```")
-    embed.add_field(name="NSFW", value="```boobs | butts```")
+    embed.add_field(name="NSFW", value="```boobs | butts | e621```")
     embed.set_footer(text="Cosmos Alpha ")
     await ctx.send(embed=embed)
     
@@ -89,6 +89,26 @@ async def boobs(ctx):
     em.set_image(url=image_url)
     em.set_footer(text=f"Requested by {ctx.message.author.name}")
     await ctx.send(embed=em)
+  
+@bot.command()
+async def e621(ctx, args):
+    if not ctx.channel.is_nsfw():
+      await ctx.send("**This channel is not marked as NSFW.**")
+      return
+    url_base = 'https://e621.net/post/index.json'
+    if args:
+        url = url_base + '?tags=' + '+'.join(args)
+    else:
+        url = url_base + '?tags=nude'
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as data:
+            data = await data.read()
+            data = json.loads(data)
+    image_url = post['file_url']
+    embed = discord.Embed(color=0xff02e9)
+    embed.set_author(name="Random NSFW Image")
+    embed.set_image(url=image_url)
+        embed.set_footer(text=f"Requested by {ctx.message.author.name}")
     
 @bot.command()
 async def butts(ctx):
