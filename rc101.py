@@ -66,6 +66,11 @@ async def echo(ctx,*, requested : str):
     await ctx.send(requested)
     
 @bot.command()
+@commands.is_owner()
+async def dm(ctx, user : discord.Member,*, requested : str):
+    await user.send(requested)
+    
+@bot.command()
 async def boobs(ctx):
     if not ctx.channel.is_nsfw():
       await ctx.send("**This channel is not marked as NSFW.**")
